@@ -36,36 +36,39 @@
 </div>
 
 
-<div class="container">
-<table class="table table-striped">
+<div class="container" >
+    <div class="row mt-3">
+        <div class="col-lg-6">
+            <h3>Listado de Noticias</h3>
+        </div>
+        <div class="col-lg-6">
+            <button class="btn btn-primary" routerLink="/agregar"> Nuevo </button>
+        </div>
+    </div>
+
+<table class="table table-striped" >
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Id</th>
+        <th scope="col">Título</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Url</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor = "let item of ns.listNoticiasNetCore">
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+        <td>{{item.id}}</td>
+        <td>{{item.titulo}}</td>
+        <td>{{item.description.substring(0, 100)}}</td>
+        <td>{{item.url}}</td>
+        <td><button class="btn btn-primary btn-sm float-end" [routerLink]="['/editarNoticia/', item.id]">Editar</button></td>
+        <td><button type="button" (click)="eliminarNoticia(item.id)" class="btn btn-danger btn-sm float-end">Eliminar</button></td>
+      </tr>      
     </tbody>
   </table>
-
+  <div class="" *ngIf="ns.listNoticiasNetCore.length == 0">
+      <h5>No hay datos a mostrar</h5>
+  </div>
 </div>

@@ -4,12 +4,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Noticias } from '../interfaces/noticias';
 import { NoticiasNetCore } from '../interfaces/noticiasNetCore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoticiasService {
 
+  private api = 'https://localhost:44326/api/';
   //declaramos variable
   // noticias: any[] = [];
   noticias: Noticias[]=[];
@@ -32,11 +34,28 @@ export class NoticiasService {
 
     //Metodo que carga la información de nuestra api
     cargarNoticiasNetCore(){
-      return this.http.get('https://localhost:44326/api/Noticias/GetAll')
+      return this.http.get(this.api + 'Noticias/GetAll')
       .subscribe((res:any) => {
         this.listNoticiasNetCore = res; 
         console.log(this.listNoticiasNetCore);
       })
+    }
+
+    grabarNoticia(noticia: NoticiasNetCore):Observable<any>{
+      return this.http.post(this.api + "Noticias", noticia);
+    }
+
+    getComentario(id:string):Observable<any>{
+      // https://localhost:44326/api/Noticias?id=05F4F68E-9BB1-4E36-836C-0A9DAEC8736A
+      return this.http.get(`${this.api}Noticias/?id=${id}`);
+    }
+
+    updateNoticia(noticia:NoticiasNetCore):Observable<any>{
+      return this.http.put(`${this.api}Noticias`, noticia);
+    }
+
+    deleteNoticia(id: string):Observable<any>{
+      return this.http.delete(`${this.api}Noticias/?id=${id}`);
     }
 }
 

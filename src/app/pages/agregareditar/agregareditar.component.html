@@ -1,0 +1,43 @@
+<div class="container">
+    <h3 class="mt-5">{{accion}} nueva noticia</h3>
+<form [formGroup]="agregarnoticia" (ngSubmit)="agregarEditarNoticia()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Título</label>
+      <input formControlName="titulo" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <span *ngIf="agregarnoticia.get('titulo')?.invalid && agregarnoticia.get('titulo')?.touched" class="text-danger">
+          El Título es requerido
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Descripción</label>
+      <input formControlName="description" type="text" class="form-control" id="exampleInputPassword1">
+      <span *ngIf="agregarnoticia.get('description')?.invalid && agregarnoticia.get('description')?.touched" class="text-danger">
+        La Descripción es requerido
+    </span>
+    </div>
+    <div class="form-group">
+        <label for="">Contenido</label>
+        <textarea formControlName="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <span *ngIf="agregarnoticia.get('content')?.invalid && agregarnoticia.get('content')?.touched" class="text-danger">
+            El Contenido es requerido
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Imagen</label>
+        <input formControlName="image" type="text" class="form-control" id="exampleInputPassword1">
+        <span *ngIf="agregarnoticia.get('Imagen')?.invalid && agregarnoticia.get('Imagen')?.touched" class="text-danger">
+            La Imagen es requerida
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="">Url</label>
+        <input formControlName="url" type="text" class="form-control" id="exampleInputPassword1">
+        <span *ngIf="agregarnoticia.get('url')?.invalid && agregarnoticia.get('url')?.touched" class="text-danger">
+            La Url es requerida
+        </span>
+      </div>
+        
+      <button type="button" routerLink="/login" class="btn btn-secondary">Volver</button>
+      <button type="submit" class="btn btn-primary float-end">Grabar</button>
+  </form>
+</div>
