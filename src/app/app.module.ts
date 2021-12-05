@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import { AgregareditarComponent } from './pages/agregareditar/agregareditar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminComponent } from './pages/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DetalleComponent,
     TituloPipe,
     LoginComponent,
-    AgregareditarComponent
+    AgregareditarComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
