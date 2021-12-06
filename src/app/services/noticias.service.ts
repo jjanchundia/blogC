@@ -14,7 +14,7 @@ export class NoticiasService {
 
   // private api = 'http://localhost:22795/api/';
   //  private api = 'https://apiblogc.herokuapp.com/api/'
-   private api = 'http://apiblogcors.azurewebsites.net/api/'
+   private api = 'https://apiblogcors.azurewebsites.net/api/'
   
   //declaramos variable
   noticias: Noticias[]=[];
